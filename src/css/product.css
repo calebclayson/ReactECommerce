@@ -1,0 +1,24 @@
+img {
+    height: 20vh;
+    margin: 0 auto;
+}
+
+.product {
+    width: 30vw;
+    padding: 1.2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* margin:.2em; */
+    border-bottom: 1px solid #dadfea;
+}
+
+.title {
+    text-align: center;
+    font-size: 1.5em
+}
+
+.title, .description {
+    margin: 1.5em 0;
+}
