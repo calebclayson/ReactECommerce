@@ -8,3 +8,8 @@
   text-decoration: none;
   padding: .5em
 }
+
+.itemLink {
+  text-decoration: none;
+  color: black;
+}

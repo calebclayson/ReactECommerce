@@ -6,6 +6,7 @@ import {connect} from 'react-redux';
 import Products from './components/products';
 import Cart from './components/cart';
 import Login from './components/login';
+import Current from './components/current';
 
 class App extends Component {
   componentDidMount() {
@@ -33,6 +34,7 @@ class App extends Component {
         <Route path="/" exact component={Products} />
         <Route path="/cart" component={Cart} />
         <Route path="/login" component={Login} />
+        <Route path="/:productID" component={Current} />
       </Router>
     );
   }
@@ -49,10 +51,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    products: state.ProductReducer
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(null, mapDispatchToProps)(App);
