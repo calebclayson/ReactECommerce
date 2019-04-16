@@ -31,3 +31,20 @@
   align-content: center;
   height: 100%;
 }
+
+select {
+  margin: 1.5em;
+}
+
+.no-items {
+  padding: 2em;
+  text-align:center;
+  font-size: 2em;
+  width: 100%;
+}
+
+.confirm-button {
+  position: absolute;
+  bottom: 2em;
+  right: 2em;
+}

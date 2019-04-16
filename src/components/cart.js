@@ -18,9 +18,9 @@ class Cart extends Component {
         return (
             <div>
             <div className="container">
-                {this.props.cart.length > 0 ? this.findCartItems() : 'No Items in Cart'}
+                {this.props.cart.length > 0 ? this.findCartItems() : <div className="no-items">No Items in Cart</div>}
             </div>
-            <button onClick={() => this.props.confirm()}>Confirm Purchases</button>
+            <button className="confirm-button" onClick={() => this.props.confirm()}>Confirm Purchases</button>
             </div>
         );
     }
