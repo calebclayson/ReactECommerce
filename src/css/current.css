@@ -1,0 +1,40 @@
+.detail-product {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50em;
+    margin: 0 auto;
+}
+
+.detail-img {
+    height: 30vh;
+}
+
+.addCart {
+    display: flex;
+    justify-content: center;
+}
+
+input {
+    padding: .5em;
+    font-size: 1em;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #adadad;
+}
+
+button {
+    color: white;
+    background-color: black;
+    border: 1px solid transparent;
+    padding: .5em;
+    margin: .5em;
+    border-radius: 5px;
+    font-size: 1em;
+    outline: none;
+}
+
+.detail-price {
+    text-align: center;
+    margin-bottom: 2em;
+}

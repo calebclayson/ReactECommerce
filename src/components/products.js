@@ -7,7 +7,15 @@ class Products extends Component {
     createProductDiv() {
         return this.props.products.map(product => {
             return (
-                <Product product={product} />
+                <Product key={product.id} product={product} />
+            );
+        })
+    }
+
+    createCategoryOptions() {
+        return this.props.categories.map(category => {
+            return (
+                <option key={category} value={category}>{category}</option>
             );
         })
     }
@@ -15,6 +23,9 @@ class Products extends Component {
     render() { 
         return (
             <div className="container">
+                <select key="0">
+                    {this.createCategoryOptions()}
+                </select>
                 {this.createProductDiv()}
             </div>
         );
@@ -23,7 +34,8 @@ class Products extends Component {
 
 const mapStateToProps = state => {
     return {
-      products: state.ProductReducer
+      products: state.ProductReducer.products,
+      categories: state.ProductReducer.categories
     };
 }
 

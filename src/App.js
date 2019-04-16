@@ -15,6 +15,11 @@ class App extends Component {
         .then(allItems => {
             this.props.addProducts(allItems);
     });
+    fetch('https://my-json-server.typicode.com/tdmichaelis/typicode/categories')
+        .then(rsp => rsp.json())
+        .then(allItems => {
+            this.props.addCategories(allItems);
+    });
   }
 
   render() {
@@ -46,6 +51,12 @@ const mapDispatchToProps = dispatch => {
       dispatch({
         type: 'ADD_PRODUCTS',
         products
+      })
+    },
+    addCategories: categories => {
+      dispatch({
+        type: 'ADD_CATEGORIES',
+        categories
       })
     }
   }

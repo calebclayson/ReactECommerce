@@ -6,7 +6,7 @@ class Current extends Component {
     getCurrentItem() {
         return this.props.products.map(product => {
             if(Number(product.id) === Number(this.props.match.params.productID)) {
-                return <ProductDetail product={product}/>;
+                return <ProductDetail key={product.id} product={product}/>;
             } else {
                 return null;
             }
@@ -24,7 +24,7 @@ class Current extends Component {
 
 const mapStateToProps = state => {
     return {
-        products: state.ProductReducer
+        products: state.ProductReducer.products
     }
 }
  
