@@ -3,13 +3,7 @@ import '../css/current.css';
 import { connect } from 'react-redux';
 
 class CartItem extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            inputVal: this.props.quantity
-        }
-        CartItem.context = this;
-    }
+    state={inputVal:this.props.quantity}
 
     render() {
         return (
@@ -27,8 +21,16 @@ class CartItem extends Component {
         );
     }
 
-    handleChange(val) {
-        CartItem.context.setState({inputVal: val.target.value});
+    handleChange = (e) => {
+        this.setState({inputVal: Number(e.target.value)});
+    }
+}
+
+function checkQuantity(num) {
+    if(num <= 0) {
+        return Number(1);
+    } else {
+        return Number(num);
     }
 }
 
@@ -39,7 +41,7 @@ const mapDispatchToProps = dispatch => {
                 type: 'UPDATE_CART',
                 cart: {
                     id: id,
-                    quantity: Number(quantity) > 0 ? Number(quantity) : 1
+                    quantity: checkQuantity(quantity)
                 }
             })
         },

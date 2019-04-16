@@ -24,7 +24,7 @@ function handleChange(val) {
 }
 
 function noZero(num) {
-    if(Number(num) < 0) {
+    if(Number(num) <= 0) {
         return Number(1);
     } else {
         return Number(num);
@@ -41,6 +41,7 @@ const mapDispatchToProps = dispatch => {
                 quantity: noZero(quantity)
             }
         })
+        inputVal = '';
       }
     }
   }
