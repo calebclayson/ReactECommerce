@@ -15,7 +15,14 @@ class Cart extends Component {
     }
     
     render() { 
-        return ( <div className="container">{this.props.cart.length > 0 ? this.findCartItems() : 'No Items in Cart'}</div>);
+        return (
+            <div>
+            <div className="container">
+                {this.props.cart.length > 0 ? this.findCartItems() : 'No Items in Cart'}
+            </div>
+            <button onClick={() => this.props.confirm()}>Confirm Purchases</button>
+            </div>
+        );
     }
 }
 
@@ -25,5 +32,15 @@ const mapStateToProps = state => {
       cart: state.ProductReducer.cart
     };
 }
+
+const mapDispatchToProps = dispatch => {
+    return {
+        confirm: () => {
+            dispatch({
+                type: 'WIPE_CART'
+            })
+        }
+    }
+}
  
-export default connect(mapStateToProps)(Cart);
+export default connect(mapStateToProps, mapDispatchToProps)(Cart);

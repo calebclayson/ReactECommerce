@@ -89,6 +89,17 @@ export default function (state = { categories: [''], products: [], cart: [], use
         ],
         user: action.user
       }
+    case "WIPE_CART":
+      return {
+        categories: [
+          ...state.categories
+        ],
+        products: [
+          ...state.products
+        ],
+        cart: [],
+        user: state.user
+      }
     default:
       return state
   }
