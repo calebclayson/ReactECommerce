@@ -4,11 +4,24 @@ import Product from './product';
 import '../css/products.css';
 
 class Products extends Component {
+    state={currentCategory:''}
+
     createProductDiv() {
         return this.props.products.map(product => {
-            return (
-                <Product key={product.id} product={product} />
-            );
+            if(this.state.currentCategory === '') {
+                return (
+                    <Product key={product.id} product={product} />
+                );
+            } else {
+                for(let i = 0; i < this.props.products.length; i++) {
+                    if(product.category === this.state.currentCategory) {
+                        return (
+                            <Product key={product.id} product={product} />
+                        )
+                    }
+                }
+            }
+            return null;
         })
     }
 
@@ -20,10 +33,14 @@ class Products extends Component {
         })
     }
 
+    filterProducts = e => {
+        this.setState({currentCategory:e.target.value})
+    }
+
     render() { 
         return (
             <div className="container">
-                <select key="0">
+                <select key="0" onChange={this.filterProducts}>
                     {this.createCategoryOptions()}
                 </select>
                 {this.createProductDiv()}

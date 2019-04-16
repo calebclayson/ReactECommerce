@@ -1,4 +1,4 @@
-export default function (state={categories:[''],products:[],cart:[]}, action) {
+export default function (state = { categories: [''], products: [], cart: [], user: { name: '', in: false } }, action) {
   switch (action.type) {
     case "ADD_PRODUCTS":
       return {
@@ -9,9 +9,10 @@ export default function (state={categories:[''],products:[],cart:[]}, action) {
           ...state.products,
           ...action.products
         ],
-        cart:[
+        cart: [
           ...state.cart
-        ]
+        ],
+        user: state.user
       }
     case "ADD_TO_CART":
       return {
@@ -24,12 +25,13 @@ export default function (state={categories:[''],products:[],cart:[]}, action) {
         cart: [
           ...state.cart,
           action.cart
-        ]
+        ],
+        user: state.user
       }
     case "UPDATE_CART":
       let newCart = [...state.cart];
-      for(let i = 0; i < newCart.length; i++) {
-        if(Number(action.cart.id) === Number(newCart[i].id)) {
+      for (let i = 0; i < newCart.length; i++) {
+        if (Number(action.cart.id) === Number(newCart[i].id)) {
           newCart[i].quantity = action.cart.quantity;
         }
       }
@@ -40,12 +42,13 @@ export default function (state={categories:[''],products:[],cart:[]}, action) {
         products: [
           ...state.products
         ],
-        cart: newCart
+        cart: newCart,
+        user: state.user
       }
     case "DELETE_CART_ITEM":
       let newCart2 = [...state.cart];
-      for(let i = 0; i < newCart2.length; i++) {
-        if(Number(action.id) === Number(newCart2[i].id)) {
+      for (let i = 0; i < newCart2.length; i++) {
+        if (Number(action.id) === Number(newCart2[i].id)) {
           newCart2.splice(i, 1);
         }
       }
@@ -56,7 +59,8 @@ export default function (state={categories:[''],products:[],cart:[]}, action) {
         products: [
           ...state.products
         ],
-        cart: newCart2
+        cart: newCart2,
+        user: state.user
       }
     case "ADD_CATEGORIES":
       return {
@@ -69,7 +73,21 @@ export default function (state={categories:[''],products:[],cart:[]}, action) {
         ],
         cart: [
           ...state.cart
-        ]
+        ],
+        user: state.user
+      }
+    case "UPDATE_USER":
+      return {
+        categories: [
+          ...state.categories
+        ],
+        products: [
+          ...state.products
+        ],
+        cart: [
+          ...state.cart
+        ],
+        user: action.user
       }
     default:
       return state
