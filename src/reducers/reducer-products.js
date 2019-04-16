@@ -1,4 +1,4 @@
-export default function (state = { categories: [''], products: [], cart: [], user: { name: '', in: false } }, action) {
+export default function (state = { categories: [''], products: [], cart: [], user: { name: '', password:'', in: false } }, action) {
   switch (action.type) {
     case "ADD_PRODUCTS":
       return {
